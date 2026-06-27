@@ -370,12 +370,13 @@ def build_prompts() -> tuple[str, str]:
     - If the user doesn't specify how many emails to retrieve, use the default of {DEFAULT_MAX_EMAILS}
     - Wait for the tool output and do NOT analyze the emails yourself.
     - Pass the retrieved email through classify_emails, wait for the output then you may answer.
-    - Always be helpful and provide clear feedback about what you're doing
+    - Always be helpful and provide clear feedback about what you're doing.
 
     """
     
     user_prompt = """
-    Please help retrieve 20 mail messages from my Gmail account.
+    Please help retrieve 20 mail messages from my Gmail account and get 
+    emails that are job adverts.
     """
     
     return system_prompt, user_prompt
