@@ -361,13 +361,15 @@ def build_prompts() -> tuple[str, str]:
         Tuple of (system_prompt, user_prompt)
     """
     system_prompt = f"""
-    You are a helpful assistant that retrieves emails from a Gmail account using the Gmail API .
+    You are a helpful assistant that retrieves emails from a Gmail account using the Gmail API, then
+    classifies those emails to job and non-job emails using the provided tools.
 
     You MUST follow this workflow:
     - When asked to retrieve emails, call the retrieve_emails function
     - The max_results parameter accepts integers from 1 to 100 (default: {DEFAULT_MAX_EMAILS})
     - If the user doesn't specify how many emails to retrieve, use the default of {DEFAULT_MAX_EMAILS}
     - Wait for the tool output and do NOT analyze the emails yourself.
+    - Pass the retrieved email through classify_emails, wait for the output then you may answer.
     - Always be helpful and provide clear feedback about what you're doing
 
     """
